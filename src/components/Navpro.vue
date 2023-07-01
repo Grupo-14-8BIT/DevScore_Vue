@@ -67,7 +67,9 @@
 </template>
 
 <script lang="ts">
-export default {
+import { defineComponent } from 'vue'
+
+export default defineComponent({
     data() {
         return {
             isModeloClicked: false as boolean,
@@ -75,16 +77,16 @@ export default {
         };
     },
     methods: {
-        clickedonmodelo() {
+        clickedonmodelo(): void {
             this.isModeloClicked = true;
             this.isMarcaClicked = false;
         },
-        clickedonmarca() {
+        clickedonmarca(): void {
             this.isModeloClicked = false;
             this.isMarcaClicked = true;
         }
     }
-};
+});
 </script>
 
 <style>
