@@ -1,5 +1,5 @@
 <template>
-    <div class="background-nav">
+  <div class="background-nav">
     <div>
       <header class="navbar">
         <div class="logo">
@@ -12,7 +12,7 @@
           <div class="profile" @click="togglePopup">
             <img class="profile-image" src="../assets/logo.png" alt="Profile" />
             <div v-if="isPopupOpen" class="popup">
-              <router-link to="/profile">Profile</router-link>
+              <router-link to="/aboutme">Profile</router-link>
               <router-link to="/settings">Settings</router-link>
               <router-link to="/logout">Logout</router-link>
             </div>
@@ -45,11 +45,13 @@ export default defineComponent({
 
 <style>
 .background-nav {
-  background-color: #f5f5f5;
+  background-color: black;
+  opacity: 0.95;
   /* background-image: url("file:///home/wander/Downloads/layered-peaks-haikei.svg"); */
   background-size: contain;
   background-position: center;
 }
+
 .navbar {
   display: flex;
   justify-content: space-between;
