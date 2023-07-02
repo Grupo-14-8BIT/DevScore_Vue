@@ -23,11 +23,17 @@
             </div>
 
             <div class="col-2">
-                <img src="../assets/logo.png" alt="logo" class="pic">
+                <img src="../assets/profilepic.png" alt="logo" class="pic">
                 <div class="contact">
-                    <div class="discord"></div>
-                    <div class="github"></div>
-                    <div class="linkedin"></div>
+                    <div class="discord">
+                        <img src="../assets/discord.png" alt="logo" class="pic1">
+                    </div>
+                    <div class="github">
+                        <img src="../assets/github.png" alt="logo" class="pic2">
+                    </div>
+                    <div class="linkedin">
+                        <img src="../assets/linkitin.png" alt="logo" class="pic2">
+                    </div>
                 </div>
             </div>
 
@@ -42,11 +48,11 @@
                 </ul>
                 <div class="conquest">
                     <ul class="conquest1">
-                        <li><img src="" alt=""></li>
-                        <li><img src="" alt=""></li>
-                        <li><img src="" alt=""></li>
-                        <li><img src="" alt=""></li>
-                        <li><img src="" alt=""></li>
+                        <li><img class="conquest2" src="../assets/conquest.png" alt=""></li>
+                        <li><img class="conquest2" src="../assets/conquest.png" alt=""></li>
+                        <li><img class="conquest2" src="../assets/conquest.png" alt=""></li>
+                        <li><img class="conquest2" src="../assets/conquest.png" alt=""></li>
+                        <li><img class="conquest2" src="../assets/conquest.png" alt=""></li>
                     </ul>
                 </div>
             </div>
@@ -54,12 +60,12 @@
     </div>
     <div class="row-2">
         <div class="clm-about-me">
-            <img src="../assets/profileaboutme_520x347.jpeg" class="aboutmepic" alt="">
+            <img src="../assets/porfaboutpic.png" class="aboutmepic" alt="">
             <router-link type="button" to="/aboutme" :class="{ 'btns': isMarcaClicked }" @click="clickedonmarca()"
                 class="routs btn-about-me">ABOUT ME</router-link>
         </div>
         <div class="clm-project">
-            <img src="../assets/profileprojectpic_520x347.jpeg" alt="">
+            <img src="../assets/profprojpc.png" alt="">
             <router-link type="button" class="routs btn-profile" :class="{ 'btns': isModeloClicked }" @click="clickedonmodelo()"
                  to="/projects">PROJECTS</router-link>
         </div>
@@ -103,11 +109,18 @@ export default defineComponent({
 }
 
 .curso {
+    display: flex;
+    justify-content: flex-start;
     list-style-type: none;
 }
 
 .conquest1 {
     display: flex;
+    list-style-type: none;
+}
+.conquest2 {
+    height: 30px;
+    width: 30px;
 }
 
 .col-4 {
@@ -159,33 +172,57 @@ export default defineComponent({
 }
 
 .pic {
-    height: 150px;
-    width: 150px;
+    height: 180px;
+    width: 180px;
 }
 
 .contact {
+    margin-top: 10px;
     display: flex;
     justify-content: space-between;
     height: 50px;
+}
+.pic1{
+    height: 50px;
+    width: 60px;
+    border-radius: 12px;
+}
+.pic2{
+    height: 42px;
+    width: 40px;
+    border-radius: 12px;
 }
 
 .discord {
     height: 50px;
     width: 45px;
+    background-color: greenyellow;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .github {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 50px;
     width: 45px;
+    background-color: greenyellow;
+    border-radius: 12px;
+
 }
 
 .linkedin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 50px;
     width: 45px;
-}
+    background-color: greenyellow;
+    border-radius: 12px;
 
-.col-3 {
-    border: 1px solid yellow;
 }
 
 .row-2 {
@@ -221,8 +258,7 @@ export default defineComponent({
     justify-content: center;
     align-items: center;
     font-weight: bold;
-    border-top-left-radius: 14px;
-    border-top-right-radius: 14px;
+    border-radius: 14px;
     text-decoration: none;
     border: none;
 }
@@ -269,8 +305,7 @@ export default defineComponent({
     justify-content: center;
     align-items: center;
     border: none;
-    border-top-left-radius: 14px;
-    border-top-right-radius: 14px;
+    border-radius: 14px;
 }
 
 .clm-project .btn-profile:hover {
@@ -290,10 +325,15 @@ export default defineComponent({
 .routs {
     cursor: pointer;
     background-color: rgb(26, 157, 26);
+    margin-bottom: 15px;   
 }
 
 .btns {
     background-color: rgb(40, 0, 74);
+    margin-bottom: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius:0px;
 }
+
 </style>
   
