@@ -1,8 +1,6 @@
 <template>
   <div class="contain">
-    <div class="logo">
-      <img src="../assets/logo.png" alt="logo">
-    </div>
+   
     <div class="form-container">
       <h1>username!</h1>
       <div class="profile-section">
@@ -16,17 +14,17 @@
       <div class="input-link">
         <div class="link-container">
           <label for="github-link"></label>
-          <input type="text" id="github-link" placeholder="GITHUB" v-model="GITHUB" />
+          <input type="text" id="github-link" placeholder="Enter your GitHub link" v-model="GITHUB" />
           <button @click="submit">Submit</button>
         </div>
         <div class="link-container">
           <label for="linkedin-link"></label>
-          <input type="text" id="linkedin-link" placeholder="LINKEDIN" v-model="LINKEDIN" />
+          <input type="text" id="linkedin-link" placeholder="Enter your LinkedIn link" v-model="LINKEDIN" />
           <button @click="submit">Submit</button>
         </div>
         <div class="link-container">
           <label for="discord-link"></label>
-          <input type="text" id="discord-link" placeholder="DISCORD" v-model="DISCORD" />
+          <input type="text" id="discord-link" placeholder="Enter your Discord link" v-model="DISCORD" />
           <button @click="submit">Submit</button>
         </div>
       </div>
@@ -38,19 +36,22 @@
 .contain {
   background: linear-gradient(to bottom, rgb(0, 0, 0), rgb(0, 0, 0), rgb(23, 0, 45), rgb(29, 0, 57));
   height: 100vh;
+  justify-content: center;
+  display: flex;
 }
+
 
 .form-container {
   background-color: rgb(40, 0, 74);
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 100%;
-  width: 100%;
+  max-width: 80%;
+  height: 30vw;
   padding: 20px;
   border-radius: 30px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  margin-top: 20px;
+  margin-top: 100px;
 }
 
 h1 {
@@ -62,28 +63,35 @@ h1 {
   align-items: center;
   margin-right: 20px;
   max-width: 100%;
+  justify-content: center;
 }
 
 .profile-img {
-  width: 150px;
+  display: flex;
+  width: 300px;
   margin-right: 100px;
+  /* border: 2px solid red; */
+
 }
 
 .profile-desc textarea {
   display: flex;
   width: 100%;
-  max-width: 100%;
+  max-width: 800px; /* Aumente a largura máxima conforme necessário */
   padding: 20px;
   border-radius: 10px;
   border: 1px solid #ccc;
   margin-bottom: 10px;
+  width: 400px;
+  
 }
-
 .input-link {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
   margin-top: 20px;
+
 }
 
 .link-container {
@@ -92,11 +100,21 @@ h1 {
   margin-bottom: 10px;
 }
 
-label {
-  display: flex;
-  color: white;
-  margin-right: 10px;
+
+input{
+  height: 20px;
+  border-radius: 10px;
+  background-color: white ;
+  color: green;
 }
+button{
+  font-family: 'Press Start 2P', cursive;
+  font-size: 13px;
+  color: green;
+  background-color: rgb(40, 0, 74)  ;
+  animation: neon-glow 4.5s linear infinite;
+}
+
 </style>
 
 <script lang="ts">
@@ -111,15 +129,18 @@ export enum plataforma {
 export default {
   data() {
     return {
-      link: '',
+      GITHUB: '',
+      LINKEDIN: '',
+      DISCORD: '',
       selectedPlatform: '',
       plataformaOptions: ['GITHUB', 'LINKEDIN', 'DISCORD'],
     };
   },
   methods: {
     submit() {
-      console.log('Link:', this.link);
-      console.log('Platform:', this.selectedPlatform);
+      console.log('GitHub Link:', this.GITHUB);
+      console.log('LinkedIn Link:', this.LINKEDIN);
+      console.log('Discord Link:', this.DISCORD);
     },
   },
 };
