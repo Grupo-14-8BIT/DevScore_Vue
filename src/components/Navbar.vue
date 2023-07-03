@@ -12,9 +12,6 @@
       <li>
         <router-link to="/aboutme" :class="{ active: currentPath === '/aboutme' }">Profile</router-link>
       </li>
-      <li>
-        <router-link to="/cadastro" :class="{ active: currentPath === '/cadastro' }">Contact</router-link>
-      </li>
     </ul>
     <div class="search-bar">
       <div class="search-neon"></div>
