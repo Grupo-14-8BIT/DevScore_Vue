@@ -62,12 +62,12 @@
     methods: {
       addValues() {
         // Perform logic to add the values
-        console.log('Username:', this.username);
-        console.log('Name:', this.name);
-        console.log('Password:', this.password);
-        console.log('RA:', this.RA);
-        console.log('Phone:', this.phone);
-        console.log('Email:', this.email);
+        // console.log('Username:', this.username);
+        // console.log('Name:', this.name);
+        // console.log('Password:', this.password);
+        // console.log('RA:', this.RA);
+        // console.log('Phone:', this.phone);
+        // console.log('Email:', this.email);
       }
     }
   };
