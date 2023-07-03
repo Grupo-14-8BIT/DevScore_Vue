@@ -10,10 +10,10 @@
         <router-link to="/home" :class="{ active: currentPath === '/home' }">Home</router-link>
       </li>
       <li>
-        <router-link to="/about" :class="{ active: currentPath === '/about' }">About</router-link>
+        <router-link to="/aboutme" :class="{ active: currentPath === '/aboutme' }">Profile</router-link>
       </li>
       <li>
-        <router-link to="/contact" :class="{ active: currentPath === '/contact' }">Contact</router-link>
+        <router-link to="/cadastro" :class="{ active: currentPath === '/cadastro' }">Contact</router-link>
       </li>
     </ul>
     <div class="search-bar">
