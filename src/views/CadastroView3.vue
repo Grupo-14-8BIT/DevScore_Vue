@@ -5,7 +5,10 @@
       <h1>username!</h1>
       <div class="profile-section">
         <div class="profile-img">
-          <img src="../assets/profilepic.png" alt="Profile Image">
+          <div class="input-group mb-3">
+            <input type="file"  id="inputGroupFile02">
+            <label class="img.file" for="inputGroupFile02"><img src="../assets/profilepic.png" alt="Profile Image"></label>
+        </div>
         </div>
         <div class="profile-desc">
           <textarea class="form-control" placeholder="Profile Description" rows="5"></textarea>
@@ -38,6 +41,10 @@
   height: 100vh;
   justify-content: center;
   display: flex;
+}
+
+input[type="file"] {
+    display: none;
 }
 
 
