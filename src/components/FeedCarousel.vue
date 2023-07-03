@@ -40,9 +40,9 @@ export default {
         var options = {
           method: 'GET',
           url: 'https://api.newscatcherapi.com/v2/search',
-          params: { q: `Bitcoin`, lang: 'en', sort_by: 'relevancy', page: '1' },
-          headers: {  
-            'x-api-key': 'U52rKSTXokWuwsF-oro-_XwwNVfgbD4vMWFooWBagsU'
+          params: { q: 'Bitcoin', lang: 'en', sort_by: 'relevancy', page: '1' },
+          headers: {
+            'x-api-key': 'yvNqum90XTFNpCHCWUW8aRLtW1eLvAV9seAjn5h5v0w'
           }
         };
         const response = await axios.request(options);

@@ -3,6 +3,11 @@ import Projetoformcadastrar from '../views/CadastrarProjetos.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
+    path: '/',
+    name: 'home',
+    component: () => import('../views/Home.vue')
+  },
+  {
     path: '/home',
     name: 'home',
     component: () => import('../views/Home.vue')
@@ -33,10 +38,6 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('../views/CadastrarProjetos.vue')
       }
     ]
-  },{
-    path: '/linguagem',
-    name: 'Linguagem',
-    component: () => import('../views/Linguagem.vue')
   },
 ]
 
