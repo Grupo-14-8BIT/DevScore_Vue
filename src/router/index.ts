@@ -9,7 +9,7 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/cadastro2',
-    name: 'cadastro2',
+    name: 'Cadastro2',
     component: ()=>import('../views/CadastroView2.vue')
   },
   {
