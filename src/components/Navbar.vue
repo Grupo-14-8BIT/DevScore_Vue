@@ -4,7 +4,7 @@
       <router-link to="/home">
         <img src="https://github.com/Guilherme-Denarde/Img/blob/master/logo.png?raw=true" alt="Logo" />
       </router-link>
-    </div>
+   </div>
     <ul class="links">
       <li>
         <router-link to="/home" :class="{ active: currentPath === '/home' }">Home</router-link>
@@ -77,7 +77,6 @@ export default class Navbar extends Vue {
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
 .navbar {
   display: flex;
   align-items: center;
