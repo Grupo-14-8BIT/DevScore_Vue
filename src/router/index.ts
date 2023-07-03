@@ -33,8 +33,24 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('../views/CadastrarProjetos.vue')
       }
     ]
-  }
+  },
+  {
+    path: '/cadastro',
+    name: 'cadastro',
+    component: ()=>import('../views/CadastroView.vue')
+  },
+  {
+    path: '/cadastro2',
+    name: 'cadastro2',
+    component: ()=>import('../views/CadastroView2.vue')
+  },
+  {
+    path: '/cadastro3',
+    name: 'cadastro3',
+    component: ()=>import('../views/CadastroView3.vue')
+  },
 ]
+
 
 const router = createRouter({
   history: createWebHashHistory(),

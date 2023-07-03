@@ -1,8 +1,11 @@
 <template>
     <Navpro />
     <div class="title-proj"><h1>PROJECTS</h1></div>
+    <div class="projects-container">
+      <div></div>
+    </div>
     <div class="row-alfa">
-        <button class="popo"><router-link type="button" class="lol" to="/projetoformcadastrar">Cadastrar</router-link></button>
+      <router-link type="button" class="popo" to="/projetoformcadastrar">CADASTRAR</router-link>
     </div>
 </template>
 
@@ -21,33 +24,24 @@ export default defineComponent({
     justify-content: flex-start;
     color: aliceblue;
     padding: 20px;
-};
-.popo {
-  /* Customize the button appearance */
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #337ab7;
-  color: #fff;
+}
+.popo{
   text-decoration: none;
-  border-radius: 4px;
-  border: none;
-  cursor: pointer;
-}
-.lol{
-    text-decoration: none;
-}
-.popo:hover {
-  /* Add hover effect */
-  background-color: #23527c;
-}
-
-.popo:active {
-  /* Add active/pressed effect */
-  background-color: #1e466a;
+  height: 60px;
+  width: 10vw;
+  color: aliceblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  background-color: rgba(0, 162, 81, 0.84);
 }
 .row-alfa{
     background-color: rgb(40, 0, 74);
     padding: 50px;
-    border: 1px solid red;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
 }
+
 </style>
