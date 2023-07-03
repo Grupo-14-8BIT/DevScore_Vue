@@ -13,5 +13,5 @@ export class Desenvolvedor {
   projeto!:Projeto[];
 
   
-
+constructor() { }
 }

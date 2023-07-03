@@ -8,6 +8,11 @@ const routes: Array<RouteRecordRaw> = [
     component: ()=>import('../views/CadastroView.vue')
   },
   {
+    path: '/cadastrar',
+    name: 'cadastrar',
+    component: ()=>import('../views/cadastrar.vue')
+  },
+  {
     path: '/cadastro2',
     name: 'Cadastro2',
     component: ()=>import('../views/CadastroView2.vue')
@@ -19,13 +24,13 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/',
-    name: 'home',
-    component: () => import('../views/Home.vue')
+    name: 'index',
+    component: () => import('../views/index.vue')
   },
   {
     path: '/about',
     name: 'about',
-    component: () => import('../views/LoginView.vue')
+    component: () => import('../views/login.vue')
   },
   {
     path: '/aboutme',

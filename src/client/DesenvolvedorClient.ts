@@ -10,7 +10,7 @@ export class DesenvolvedorClient {
 
     constructor(){
         this.axiosClient = axios.create({
-            baseURL: 'http://localhost:8082',
+            baseURL: 'http://localhost:8080/desenvolvedor',
             headers: {'Content-Type' : 'application/json'}
         });
     }
@@ -39,7 +39,7 @@ export class DesenvolvedorClient {
         }
     }
 
-    public async cadastrar(dev : Desenvolvedor) : Promise<void> {
+    public async cadastrar(dev : Desenvolvedor) : Promise<string> {
         try {
             return (await this.axiosClient.post(`/create`, dev))
         } catch (error : any) {

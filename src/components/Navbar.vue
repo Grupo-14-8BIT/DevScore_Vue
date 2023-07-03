@@ -36,9 +36,8 @@
         <span class="close-btn" @click="closeSidebar">&times;</span>
       </div>
       <ul>
-        <li><a href="/page1">Page 1</a></li>
-        <li><a href="/page2">Page 2</a></li>
-        <li><a href="/page3">Page 3</a></li>
+        <li><a href="/page1">Perfil</a></li>
+        <li><a href="/page2">Projetos</a></li>
       </ul>
     </div>
   </nav>
