@@ -1,9 +1,13 @@
 <template>
     <div class="comentario2">
       <input class="form-control addid" v-model="id_autor" type="number" placeholder="ID do Autor">
-      <input class="form-control addcomment" v-model="texto" type="text" placeholder="Texto do Comentário">
-       <input class="form-control addcomment2" v-model="id_comentario_pai" type="text" placeholder="ID do Comentário Pai (opcional)">
-      <button class="btn-post-comment" @click="enviarComentario">Enviar Comentário</button>
+      <input class="form-control addcomment" v-model="texto" type="text" placeholder="coment">
+      <button class="btn-post-comment" @click="enviarComentario">Post</button>
+
+      <div class="quadcoment" v-for="comentario in comentarios" :key="comentario.id">
+      <p> {{ comentario.texto }}</p>
+
+    </div>
     </div>
   </template>
   
@@ -13,7 +17,7 @@
       return {
         id_autor: '',
         texto: '',
-        id_comentario_pai: null
+        comentarios: []
       };
     },
     methods: {
@@ -21,7 +25,7 @@
         const comentario = {
           id_autor: this.id_autor,
           texto: this.texto,
-          id_comentario_pai: this.id_comentario_pai
+          
         };
   
         fetch('http://localhost:8080/api/Comentario', {
@@ -34,6 +38,7 @@
         .then(response => {
           if (response.ok) {
             console.log('Comentário enviado!');
+            this.comentarios.push(comentario);
           } else {
             console.error('Erro ao enviar comentário.');
           }
@@ -87,5 +92,11 @@
     border-radius: 14px;
     color: aliceblue;
     background-color: green;
+}
+.quadcoment{
+  display: flex;
+  background-color: white;
+  border-radius: 10px;
+  justify-content: s;
 }
 </style>
