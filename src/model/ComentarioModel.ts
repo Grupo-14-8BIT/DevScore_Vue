@@ -5,7 +5,7 @@ import { Post } from "../model/PostModel";
 
 export class Comentario {
     id!: number;
-  comentario!: Comentario;
+  comentario!: Comentario[];
   post!: Post;
   user!: Desenvolvedor;
   tento!: string;
