@@ -6,9 +6,7 @@
                 <h2>BIO:</h2>
             </div>
             <div class="para">
-                <p>my name is Hasan Essaad im a student that cant get shit done on time and lack motivation.</p>
-                <p>> I hate front-end ,but im good at it.</p>
-                <p>> I love back-end ,but im shit at it.</p>
+                <p>{{ bios }}</p>
             </div>
         </div>
     </div>
@@ -35,6 +33,7 @@
             <h1>PARTICIPATED EVENTS</h1>
         </div>
         <div class="Events-images">
+            
             <img class="imaging" src="../assets/Event1.png" alt="">
             <img class="imaging" src="../assets/Event2.png" alt="">
         </div>
@@ -94,8 +93,25 @@
     
 <script lang="ts">
 import Navpro from '../components/Navpro.vue';
-import { defineComponent } from 'vue';
+import axios from 'axios';
+import { defineComponent, ref, onMounted, BaseTransitionPropsValidators } from 'vue';
+
 export default defineComponent({
+    setup() {
+        const bios = ref('');
+
+        onMounted(async () => {
+            try {
+                const response = await axios.get(`http://localhost:8081/desenvolvedor/1`);
+                console.log(response.data);
+                bios.value = response.data.bios;
+            } catch (error) {
+                console.error('Failed to fetch the username:', error);
+            }
+        });
+
+        return { bios };
+    },
     name: "AboutMe",
     components: { Navpro }
 });

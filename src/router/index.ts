@@ -18,7 +18,7 @@ const routes: Array<RouteRecordRaw> = [
     component: ()=>import('../views/CadastroView3.vue')
   },
   {
-    path: '/',
+    path: '/home',
     name: 'home',
     component: () => import('../views/Home.vue')
   },

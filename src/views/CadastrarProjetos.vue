@@ -1,51 +1,108 @@
 <template>
     <Navpro />
+
+    <div v-if="mensagem.active" class="row">
+        <div class="col-md-12 text-start">
+            <div :class="mensagem.css" role="alert">
+                <strong>{{ mensagem.titulo }}</strong> {{ mensagem.mensagem }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
     <div class="tits">
         <h1>SHARE YOUR PROJECT</h1>
     </div>
     <div class="rowsis">
-    <div class="container-cadastrar">
-        <div class="details">
-            <h4 class="labl">Name</h4>
-            <input type="text" placeholder="name of the project" class="inp">
-            <h4 class="labl">github link</h4>
-            <input type="text" placeholder="Link" class="inp">
-        </div>
-        <div class="description">
-            <textarea type="text" row="15" cols="60" placeholder="DESCRIPTION!" class="desc"></textarea>
-        </div>
-        <div class="langtags">
-            <div class="tit-LAN">
-                <h2>LANGUAGES</h2>
+        <div class="container-cadastrar">
+            <div class="details">
+                <h4 class="labl">Name</h4>
+                <input type="text" v-model="proj.nome" placeholder="name of the project" class="inp">
+                <h4 class="labl">github link</h4>
+                <input type="text" v-model="proj.link" placeholder="Link" class="inp">
             </div>
-            <div class="">
-                <input type="text" class="langsel">
+            <div class="description">
+                <textarea type="text" v-model="proj.descricao" row="15" cols="60" placeholder="DESCRIPTION!"
+                    class="desc"></textarea>
             </div>
+            <div class="langtags">
+                <div class="tit-LAN">
+                    <h2>LANGUAGES</h2>
+                </div>
+                <div class="">
+                    <div>
+                        
+                        <div >
+                            <select v-model="proj.linguagens">
+                                <option>Javascript</option>
+                                <option>Python</option>
+                                <option>Java</option>
+                                <option>C++</option>
+                                <option>C#</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sharing-btns">
+            <router-link type="button" class="posts cl1" @click="onClickCreate()" to="/projects">SHARE</router-link>
+            <router-link type="button" class="posts cl2" to="/projects">GO BACK</router-link>
         </div>
     </div>
-    <div class="sharing-btns">
-        <router-link type="button" class="posts cl1" to="/projects">SHARE</router-link>
-        <router-link type="button" class="posts cl2" to="/projects">GO BACK</router-link>
-    </div>
-</div>
 </template>
 
 <script lang="ts">
+import ProjetoClient from '@/client/ProjetoClient';
+import { Projeto } from '@/model/ProjetoModel';
 import { defineComponent } from 'vue';
 import Navpro from '../components/Navpro.vue';
 
 export default defineComponent({
     name: 'Projetoformcadastrar',
-    components: { Navpro }
+    components: { Navpro },
+    data() {
+        return {
+            proj: new Projeto(),
+            selects: [] as { options: string[] }[],
+                mensagem: {
+                active: true as boolean,
+                titulo: "" as string,
+                mensagem: "" as string,
+                css: "" as string
+            }
+        }
+    },
+    methods: {
+        onClickCreate() {
+            console.log(this.proj)
+            ProjetoClient.create(this.proj)
+                .then(sucess => {
+                    this.proj = new Projeto()
+                    this.mensagem.active = true;
+                    this.mensagem.mensagem = "sucess";
+                    this.mensagem.titulo = "Parabens. ";
+                    this.mensagem.css = "alert alert-success alert-dismissible fade show";
+                })
+                .catch(error => {
+                    this.mensagem.active = true;
+                    this.mensagem.mensagem = "error";
+                    this.mensagem.titulo = "Error. ";
+                    this.mensagem.css = "alert alert-danger alert-dismissible fade show";
+                });
+        },
+    }
+
+
 });
 </script>
 <style>
-.labl{
+.labl {
     color: aliceblue;
     display: flex;
     justify-content: flex-start;
 }
-.rowsis{
+
+.rowsis {
     background-color: rgb(40, 0, 74);
     display: flex;
     justify-content: center;
@@ -54,13 +111,15 @@ export default defineComponent({
     padding-top: 40px;
     padding-bottom: 60px;
 }
-.tits{
+
+.tits {
     background-color: rgb(40, 0, 74);
-    padding: 20px;    
+    padding: 20px;
     color: aliceblue;
     display: flex;
     justify-content: flex-start;
 }
+
 .container-cadastrar {
     background-color: rgb(21, 0, 39);
     border: none;
@@ -71,37 +130,47 @@ export default defineComponent({
     justify-content: space-around;
     align-items: center;
 }
-.inp{
+
+.inp {
     height: 38px;
     width: 20vw;
 }
-.details{
+
+.details {
     display: flex;
     flex-direction: column;
 }
-.desc{
+
+.desc {
     height: 44vh;
     width: 25vw;
 }
-.tit-LAN{
+
+.tit-LAN {
     color: aliceblue;
 }
-.langtags{
+.row{
+    background-color: rgb(43, 1, 83);
+}
+.langtags {
     background-color: rgb(43, 1, 83);
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
-.langsel{
+
+.langsel {
     height: 32vh;
     width: 30vw;
 }
-.sharing-btns{
+
+.sharing-btns {
     width: 50vw;
     padding: 20px;
     display: flex;
     justify-content: space-between;
 }
-.posts{
+
+.posts {
     box-shadow: 8px -8px rgba(0, 0, 0, 0.2);
     font-weight: bold;
     color: aliceblue;
@@ -114,11 +183,12 @@ export default defineComponent({
     border: none;
     border-radius: 14px;
 }
-.cl1{
+
+.cl1 {
     background-color: rgba(13, 129, 57, 0.795);
 }
-.cl2{
+
+.cl2 {
     background-color: rgba(131, 8, 8, 0.795);
 }
-
 </style>

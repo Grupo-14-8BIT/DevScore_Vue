@@ -1,10 +1,9 @@
 <template>
     <div class="profile">
         <div class="row-1">
-
             <div class="col-1">
                 <div class="username">
-                    <h1>JOE_MCnum</h1>
+                    <h1>{{ nick }}</h1>
                 </div>
                 <div class="followers_numbers">
                     <div class="following">
@@ -21,9 +20,9 @@
                     </div>
                 </div>
             </div>
-
+            
             <div class="col-2">
-                <img src="../assets/profilepic.png" alt="logo" class="pic">
+                <img :src="profile_picture" alt="logo" class="pic">
                 <div class="contact">
                     <div class="discord">
                         <img src="../assets/discord.png" alt="logo" class="pic1">
@@ -36,11 +35,12 @@
                     </div>
                 </div>
             </div>
-
+            
             <div class="col-3">
+                <button @click="isEditProfileOpen = true">Edit Profile</button>
                 <ul class="identification">
                     <li class="real-name">
-                        <h1>Hasan Cayed Essaad</h1>
+                        <h1>{{ nome }}</h1>
                     </li>
                     <li class="curso">
                         <h3>Software Engineer</h3>
@@ -66,16 +66,74 @@
         </div>
         <div class="clm-project">
             <img src="../assets/profprojpc.png" alt="">
-            <router-link type="button" class="routs btn-profile" :class="{ 'btns': isModeloClicked }" @click="clickedonmodelo()"
-                 to="/projects">PROJECTS</router-link>
+            <router-link type="button" class="routs btn-profile" :class="{ 'btns': isModeloClicked }"
+                @click="clickedonmodelo()" to="/projects">PROJECTS</router-link>
         </div>
     </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref, onMounted } from 'vue';
+import axios from 'axios';
+import EditProfile from './EditProfile.vue';
 
 export default defineComponent({
+    setup() {
+        const nick = ref('');
+        const nome = ref('');
+        const profile_picture = ref('');
+        const bios = ref('');
+
+        const isSettingsOpen = ref(false);
+        const updatedNick = ref('');
+        const updatedName = ref('');
+        const updatedProfilePicture = ref('');
+        const isEditProfileOpen = ref(false);
+        
+        onMounted(async () => {
+            try {
+                const response = await axios.get(`http://localhost:8081/desenvolvedor/2`);
+                nick.value = response.data.nick;
+                nome.value = response.data.nome;
+                bios.value = response.data.bios;
+                profile_picture.value = response.data.profile_picture;
+                updatedNick.value = response.data.nick;
+                updatedName.value = response.data.nome;
+                updatedProfilePicture.value = response.data.profile_picture;
+                console.log(response);
+                
+            } catch (error) {
+                console.error('Failed to fetch the user data:', error);
+            }
+        });
+
+        const updateData = async () => {
+            try {
+                await axios.put(`http://localhost:8081/desenvolvedor/2`, {
+                    nick: updatedNick.value,
+                    name: updatedName.value,
+                    profile_picture: updatedProfilePicture.value,
+                    // ...other fields...
+                });
+                isSettingsOpen.value = false;
+            } catch (error) {
+                console.error('Failed to update the data:', error);
+            }
+        };
+
+        return {
+            nick,
+            nome,
+            profile_picture,
+            bios,
+            isSettingsOpen,
+            updatedNick,
+            updatedName,
+            updatedProfilePicture,
+            updateData,
+            isEditProfileOpen
+        };
+    },
     data() {
         return {
             isModeloClicked: false as boolean,
@@ -94,6 +152,7 @@ export default defineComponent({
     }
 });
 </script>
+
 
 <style>
 .profile {
@@ -118,6 +177,7 @@ export default defineComponent({
     display: flex;
     list-style-type: none;
 }
+
 .conquest2 {
     height: 30px;
     width: 30px;
@@ -182,12 +242,14 @@ export default defineComponent({
     justify-content: space-between;
     height: 50px;
 }
-.pic1{
+
+.pic1 {
     height: 50px;
     width: 60px;
     border-radius: 12px;
 }
-.pic2{
+
+.pic2 {
     height: 42px;
     width: 40px;
     border-radius: 12px;
@@ -325,15 +387,14 @@ export default defineComponent({
 .routs {
     cursor: pointer;
     background-color: rgb(26, 157, 26);
-    margin-bottom: 15px;   
+    margin-bottom: 15px;
 }
 
 .btns {
     background-color: rgb(40, 0, 74);
     margin-bottom: 0px;
     border-bottom-left-radius: 0px;
-    border-bottom-right-radius:0px;
+    border-bottom-right-radius: 0px;
 }
-
 </style>
   

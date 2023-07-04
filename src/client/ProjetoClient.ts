@@ -1,55 +1,55 @@
 import axios, { AxiosInstance } from "axios";
 
-import { Desenvolvedor } from "@/model/DesenvolvedorModel";
+import { Projeto } from "@/model/ProjetoModel";
 import { PageRequest } from "@/model/page/page-request";
 import { PageResponse } from "@/model/page/page-response";
 
-export class DesenvolvedorClient {
+export class ProjetoClient {
     
     private axiosClient : AxiosInstance
 
     constructor(){
         this.axiosClient = axios.create({
-            baseURL: 'http://localhost:8081/desenvolvedor',
+            baseURL: 'http://localhost:8081/api/Projeto',
             headers: {'Content-Type' : 'application/json'}
         });
     }
 
-    public async findById(id : number) : Promise<Desenvolvedor> {
+    public async findById(id : number) : Promise<Projeto> {
         try {
-            return (await this.axiosClient.get<Desenvolvedor>(`/${id}`)).data
+            return (await this.axiosClient.get<Projeto>(`/${id}`)).data
         } catch (error : any) {
             return Promise.reject(error.response)
         }
     }
 
-    public async findAll() : Promise<Desenvolvedor[]> {
+    public async findAll() : Promise<Projeto[]> {
         try {
-            return (await this.axiosClient.get<Desenvolvedor[]>(`/findAll`)).data
+            return (await this.axiosClient.get<Projeto[]>(`/findAll`)).data
         } catch (error : any) {
             return Promise.reject(error.response)
         }
     }
 
-    public async findByAtivo() : Promise<Desenvolvedor[]> {
+    public async findByAtivo() : Promise<Projeto[]> {
         try {
-            return (await this.axiosClient.get<Desenvolvedor[]>(`/ativo`)).data
+            return (await this.axiosClient.get<Projeto[]>(`/ativo`)).data
         } catch (error : any) {
             return Promise.reject(error.response)
         }
     }
 
-    public async cadastrar(dev : Desenvolvedor) : Promise<void> {
+    public async create(proj : Projeto) : Promise<void> {
         try {
-            return (await this.axiosClient.post(`/create`, dev))
+            return (await this.axiosClient.post(`/create`, proj))
         } catch (error : any) {
             return Promise.reject(error.response)
         }
     }
 
-    public async edit(id: number, dev: Desenvolvedor) : Promise<void> {
+    public async edit(id: number, proj: Projeto) : Promise<void> {
         try {
-            return (await this.axiosClient.put(`/update?id=${id}`, dev)).data
+            return (await this.axiosClient.put(`/${id}`, proj)).data
         } catch (error : any) {
             return Promise.reject(error.response)
         }
@@ -63,7 +63,7 @@ export class DesenvolvedorClient {
         }
     }
 
-    public async findByFiltrosPaginado(pageRequest : PageRequest) : Promise<PageResponse<Desenvolvedor>> {
+    public async findByFiltrosPaginado(pageRequest : PageRequest) : Promise<PageResponse<Projeto>> {
         try {
             let requestPath = ''
 
@@ -71,11 +71,11 @@ export class DesenvolvedorClient {
             requestPath += `&size=${pageRequest.pageSize}`
             requestPath += `&sort=${pageRequest.sortField === undefined ? '' : pageRequest.sortField}, ${pageRequest.direction}`
 
-            return (await this.axiosClient.get<PageResponse<Desenvolvedor>>(requestPath, {params : {filtros : pageRequest.filter } })).data
+            return (await this.axiosClient.get<PageResponse<Projeto>>(requestPath, {params : {filtros : pageRequest.filter } })).data
         } catch (error : any) {
             return Promise.reject(error.response)
         }
     }
 }
 
-export default new DesenvolvedorClient();
+export default new ProjetoClient();
