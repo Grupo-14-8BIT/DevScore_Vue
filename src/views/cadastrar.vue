@@ -19,7 +19,7 @@
         <input type="password" class="form-control" v-model="Desenvolvedor.senha" required>
       </div>
 
-      <button @click="onClickCadastrar()"  type="submit" class="btn btn-primary">Register</button>
+      <button  type="submit" class="btn btn-primary">Register</button>
     </form>
     <div v-if="mensagem.ativo" class="alert mt-3" :class="mensagem.css">{{ mensagem.mensagem }}</div>
   </div>
@@ -50,11 +50,15 @@ export default defineComponent({
     onClickCadastrar() {
       DesenvolvedorClient.cadastrar(this.Desenvolvedor)
         .then((success) => {
-          this.Desenvolvedor = new Desenvolvedor();
+          const desenvolvedorJSON = JSON.stringify(this.Desenvolvedor);
+          document.cookie += `desenvolvedor=${desenvolvedorJSON};`;
           this.mensagem.mensagem = success;
           this.mensagem.titulo = 'Parabens. ';
           this.mensagem.css = 'alert alert-success alert-dismissible fade show';
           localStorage.setItem('sectionData', JSON.stringify(this.Desenvolvedor));
+          window.location.href = '/success-page'; // Replace with the desired URL
+
+
         })
         .catch((error) => {
           const mensagemError = error.data;
