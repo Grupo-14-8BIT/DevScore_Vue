@@ -6,8 +6,27 @@
       <h1>PROJECTS</h1>
     </div>
     <div class="projects-container">
-      <div></div>
-    </div>
+      <table class="tbs">
+      <thead>
+        <tr class="titlo">
+          <th scope="col">#</th>
+          <th scope="col">name</th>
+          <th scope="col">language</th>
+          <th scope="col">link</th>
+          <th scope="col">description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="item in projetolist" :key="item.id">
+          <th scope="row">{{ item.id }}</th>
+          <th>{{ item.nome }}</th>
+          <th>{{ item.linguagem }}</th>
+          <th>{{ item.link }}</th>
+          <th>{{ item.descricao }}</th>
+        </tr>
+      </tbody>
+    </table>
+      </div>
     <div class="row-alfa">
       <router-link type="button" class="popo" to="/projetoformcadastrar">CADASTRAR</router-link>
     </div>
@@ -15,11 +34,33 @@
 </template>
 
 <script lang="ts">
+import { Projeto } from '@/model/ProjetoModel';
+import ProjetoClient from '@/client/ProjetoClient';
 import Navpro from '../components/Navpro.vue';
 import { defineComponent } from 'vue';
 export default defineComponent({
   name: "Projects",
   components: { Navpro },
+  data() {
+      return {
+        projetolist: new Array<Projeto>()
+      }
+    },
+    mounted() {
+      this.listAll();
+    },
+    methods: {
+      listAll() {
+        ProjetoClient.listAll()
+          .then(sucess => {
+            this.projetolist = sucess
+            console.log(sucess);
+          })
+          .catch(error => {
+            console.log(error);
+        });
+      }
+    }
 })
 </script>
 <style>
@@ -29,6 +70,10 @@ export default defineComponent({
   justify-content: flex-start;
   color: aliceblue;
   padding: 20px;
+}
+.titlo{
+  color: aliceblue;
+  font-weight: bold;
 }
 .habibi{
   background-color: rgb(40, 0, 74);
@@ -52,4 +97,12 @@ export default defineComponent({
   display: flex;
   justify-content: space-around;
   flex-direction: column;
-}</style>
+}
+.projects-container{
+  border: 1px solid red;
+}
+
+.tbs{
+  width: 100vw;
+}
+</style>

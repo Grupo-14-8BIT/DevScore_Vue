@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div class="contain">
     <div class="logo">
       <img src="../assets/logo.png" alt="logo">
@@ -17,7 +17,7 @@
         <div class="link-container">
           <label for="github-link"></label>
           <input type="text" id="github-link" placeholder="GITHUB" v-model="GITHUB" />
-          <button @click="submit">Submit</button>
+          <button @click="submit()">Submit</button>
         </div>
         <div class="link-container">
           <label for="linkedin-link"></label>
@@ -118,9 +118,9 @@ export default {
   },
   methods: {
     submit() {
-      console.log('Link:', this.link);
-      console.log('Platform:', this.selectedPlatform);
+      // console.log('Link:', this.link);
+      // console.log('Platform:', this.selectedPlatform);
     },
   },
 };
-</script>
+</script> -->

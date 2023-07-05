@@ -12,11 +12,11 @@ const routes: Array<RouteRecordRaw> = [
     name: 'Cadastro2',
     component: ()=>import('../views/CadastroView2.vue')
   },
-  {
-    path: '/cadastro3',
-    name: 'cadastro3',
-    component: ()=>import('../views/CadastroView3.vue')
-  },
+  // {
+  //   path: '/cadastro3',
+  //   name: 'cadastro3',
+  //   component: ()=>import('../views/CadastroView3.vue')
+  // },
   {
     path: '/',
     name: 'home',
