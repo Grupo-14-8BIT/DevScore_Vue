@@ -1,7 +1,7 @@
 <template>
   <Navpro />
 
-  <body class="habibi">
+  <div class="habibi">
     <div class="title-proj">
       <h1>PROJECTS</h1>
     </div>
@@ -17,12 +17,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="item in projetolist" :key="item.id">
-          <th scope="row">{{ item.id }}</th>
-          <th>{{ item.nome }}</th>
-          <th>{{ item.linguagem }}</th>
-          <th>{{ item.link }}</th>
-          <th>{{ item.descricao }}</th>
+        <tr v-for="projeto in projetolist" :key="projeto.id">
+          <th scope="row">{{ projeto.id }}</th>
+          <th>{{ projeto.nome }}</th>
+          <th>{{ projeto.linguagem }}</th>
+          <th>{{ projeto.link }}</th>
+          <th>{{ projeto.descricao }}</th>
         </tr>
       </tbody>
     </table>
@@ -30,7 +30,7 @@
     <div class="row-alfa">
       <router-link type="button" class="popo" to="/projetoformcadastrar">CADASTRAR</router-link>
     </div>
-  </body>
+  </div>
 </template>
 
 <script lang="ts">
